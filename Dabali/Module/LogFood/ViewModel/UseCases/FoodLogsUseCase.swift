@@ -8,7 +8,7 @@
 import Foundation
 
 protocol FoodLogsUseCase {
-    func fetchFoodLogs()
+    func fetchFoodLogs(success: @escaping (UserFoodLogs) -> Void, failure: @escaping (any Error) -> Void)
 }
 
 class FoodLogsUseCaseImplementation: FoodLogsUseCase {
@@ -19,7 +19,11 @@ class FoodLogsUseCaseImplementation: FoodLogsUseCase {
         self.service = service
     }
     
-    func fetchFoodLogs() {
-        service.fetchFoodLogs(sucsess: <#T##(UserFoodLogs) -> Void#>, failure: <#T##(any Error) -> Void#>)
+    func fetchFoodLogs(success: @escaping (UserFoodLogs) -> Void, failure: @escaping (any Error) -> Void) {
+        service.fetchFoodLogs(success: { logs in
+            success(logs)
+        }, failure: { error in
+            failure(error)
+        })
     }
 }

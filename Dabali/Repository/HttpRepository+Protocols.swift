@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ServicesProtocol {
-    func fetchFoodLogs(sucsess: @escaping (UserFoodLogs) -> Void, failure: @escaping(Error) -> Void)
+    func fetchFoodLogs(success: @escaping (UserFoodLogs) -> Void, failure: @escaping(Error) -> Void)
 }

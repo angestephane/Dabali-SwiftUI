@@ -1,0 +1,5 @@
+# Ignorer les fichiers Xcode spécifiques à l'utilisateur
+**/xcuserdata/
+*.xcuserstate
+.DS_Store
+*.xcuserstate
