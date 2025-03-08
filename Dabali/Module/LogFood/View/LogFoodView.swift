@@ -13,12 +13,12 @@ struct LogFoodView: View {
     
     var body: some View {
         ZStack {
-            Color(.white)
+            Color(.bgPrimary)
                 .ignoresSafeArea()
             
             VStack(spacing: 30) {
                 Spacer()
-                LogFoodHeaderView(searchInput: searchText)
+                LogFoodHeaderView(searchInput: $searchText)
             }
         }
         .ignoresSafeArea()

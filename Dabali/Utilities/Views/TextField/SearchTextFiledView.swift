@@ -24,7 +24,7 @@ struct SearchTextFiledView: View {
             Spacer()
             Image(systemName: "line.3.horizontal.decrease")
                 .font(.body.bold())
-                .foregroundStyle(.darkGreen)
+                .foregroundStyle(.fgPrimary)
         }
         .padding(.vertical, 10)
         .padding(.horizontal, 20)
