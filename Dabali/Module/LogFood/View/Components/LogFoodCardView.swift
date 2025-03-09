@@ -25,8 +25,9 @@ struct LogFoodCardView: View {
                     print("delete food")
                 } label: {
                     Image(systemName: "xmark")
-                        .font(.title3.bold())
+                        .font(.callout.bold())
                         .foregroundStyle(.gray)
+                        .opacity(0.25)
                 }
             }
             
@@ -50,14 +51,14 @@ struct LogFoodCardView: View {
                 Text("satisfaisant?")
                     .font(.system(.subheadline, weight: .light))
                     .foregroundStyle(.deepGray)
-                Text("\(vm.isWorthIt ? "Non" : "Yes")")
-                    .font(.system(.subheadline, weight: .bold))
-                    .foregroundStyle(.fgRed)
+                Text("\(vm.isWorthIt ? "Yes" : "Non")")
+                    .font(.system(.caption, weight: .bold))
+                    .foregroundStyle(vm.isWorthIt ? .fgGreen : .fgRed)
                     .padding(.vertical, 5)
-                    .padding(.horizontal, 10)
+                    .padding(.horizontal, 8)
                     .background(
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(.bgRed)
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(vm.isWorthIt ? .bgGreen : .bgRed)
                     )
             }
             

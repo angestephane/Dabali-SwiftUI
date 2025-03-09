@@ -44,7 +44,6 @@ struct LogFoodView: View {
                                             .transition(.opacity.combined(with: .move(edge: .bottom)))
                                     }
                                 }
-                                .padding()
                             }
                             .transition(.opacity)
                         }
