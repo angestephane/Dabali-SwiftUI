@@ -8,8 +8,8 @@
 import Foundation
 
 struct FoodEntry: Codable, Identifiable {
-    var id: String = UUID().uuidString
-    var timestamp: Date = Date()
+    var id: String
+    var timestamp: String
     var foodName: String
     var foodType: FoodType
     var feeling: FeelingType

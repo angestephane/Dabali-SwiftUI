@@ -26,10 +26,11 @@ enum NetworkError: Error {
 
 struct HttpRepositoryConfig {
     static private let scheme: String = "http"
-    static private let baseUrl: String = "localhost:8080"
+    static private let baseUrl: String = "localhost:8081"
     
     static func getFullUrl(endpoint: String) -> String {
-        return "\(scheme):://\(baseUrl)\(endpoint)"
+        let formattedEndpoint = endpoint.starts(with: "/") ? endpoint : "/\(endpoint)"
+        return "\(scheme)://\(baseUrl)\(formattedEndpoint)"
     }
     
     static func getDefauldHeader() -> [String: String] {

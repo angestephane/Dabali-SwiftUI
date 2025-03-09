@@ -9,7 +9,7 @@ import Foundation
 
 class ServicesImplementation: ServicesProtocol {
     
-    func fetchFoodLogs(success: @escaping (UserFoodLogs) -> Void, failure: @escaping (any Error) -> Void) {
+    func fetchFoodLogs(success: @escaping ([FoodEntry]) -> Void, failure: @escaping (any Error) -> Void) {
         
         Task {
             do {
@@ -18,13 +18,14 @@ class ServicesImplementation: ServicesProtocol {
                     httpMethode: .GET
                 )
                 let data = try await NetworkManager.requestData(for: request)
-                let foodLogs: UserFoodLogs = try JSONDecoderService.decode(data: data)
+                let foodLogs: [FoodEntry] = try JSONDecoderService.decode(data: data)
                 DispatchQueue.main.async {
                     success(foodLogs)
                 }
                 
             } catch {
                 DispatchQueue.main.async {
+                    print("Decoding error")
                     failure(error)
                 }
             }

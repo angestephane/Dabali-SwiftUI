@@ -13,9 +13,10 @@ class AppNetworking {
         
         let urlString = HttpRepositoryConfig.getFullUrl(endpoint: endpoint)
         
-        var component = URLComponents(string: urlString)
-        
-        guard let url = component?.url else { throw NetworkError.badRequest }
+        guard let url = URL(string: urlString) else {
+            print("URL invalide: \(urlString)")
+            throw NetworkError.invalidURL
+        }
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = httpMethode.rawValue

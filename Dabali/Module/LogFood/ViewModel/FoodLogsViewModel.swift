@@ -11,7 +11,7 @@ class FoodLogsViewModel: ObservableObject {
     
     private let foodLogsUseCase: FoodLogsUseCase
     
-    @Published var foodLogs: UserFoodLogs?
+    @Published var foodLogsEntry: [FoodEntry] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     
@@ -20,13 +20,11 @@ class FoodLogsViewModel: ObservableObject {
     }
     
     func getFoodLogs() {
-        
-        foodLogs = nil
         isLoading = true
         
         foodLogsUseCase.fetchFoodLogs(success: { [weak self] logs in
             guard let strongSelf = self else { return }
-            strongSelf.foodLogs = logs
+            strongSelf.foodLogsEntry = logs
             strongSelf.isLoading = false
         }, failure: { [weak self] error in
             guard let strongSelf = self else { return }

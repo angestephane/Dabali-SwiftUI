@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct LogFoodCardView: View {
+    
+    @Binding var vm: FoodEntry
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             
             // MARK: - Card Hearder
             
             HStack {
-                Text("Omelette")
+                Text(vm.foodName)
                     .font(.system(.title3, weight: .bold))
                     .foregroundStyle(.black)
                 Spacer()
@@ -30,7 +33,7 @@ struct LogFoodCardView: View {
             // MARK: - Card Core Data
             
             HStack {
-                Text("🍳 Petit Déjeuner")
+                Text("\(vm.foodType.typeIcon) \(vm.foodType.title)")
                     .font(.system(.subheadline, weight: .light))
                     .foregroundStyle(.deepGray)
             }
@@ -38,7 +41,7 @@ struct LogFoodCardView: View {
             // MARK: - Card Metadata
             
             HStack {
-                Text("émotion 😢")
+                Text("émotion \(vm.feeling.feelingIcon)")
                     .font(.system(.subheadline, weight: .light))
                     .foregroundStyle(.deepGray)
                 Divider()
@@ -47,7 +50,7 @@ struct LogFoodCardView: View {
                 Text("satisfaisant?")
                     .font(.system(.subheadline, weight: .light))
                     .foregroundStyle(.deepGray)
-                Text("Non")
+                Text("\(vm.isWorthIt ? "Non" : "Yes")")
                     .font(.system(.subheadline, weight: .bold))
                     .foregroundStyle(.fgRed)
                     .padding(.vertical, 5)
@@ -65,18 +68,18 @@ struct LogFoodCardView: View {
             
             // MARK: - Card Footer
             
-            Text("J'aurai du éviter de manger cette merde.")
+            Text("\(String(describing: vm.notes ?? ""))")
                 .font(.system(.subheadline, weight: .medium))
                 .foregroundStyle(.deepGray)
         }
-        .padding(20)
+        .padding()
         .frame(maxWidth: .infinity)
         .background(
             RoundedRectangle(cornerRadius: 18)
                 .fill(.white)
                 .stroke(.borderLight.opacity(0.15), lineWidth: 1)
         )
-        .padding()
+        .padding(.horizontal)
     }
 }
 
@@ -84,7 +87,7 @@ struct LogFoodCardView: View {
     ZStack {
         Color(.bgPrimary)
             .ignoresSafeArea()
-        LogFoodCardView()
+        LogFoodCardView(vm: .constant(FoodEntry(id: "550e8400-e29b-41d4-a716-446655440000", timestamp: "2025-03-09", foodName: "Omelette", foodType: .breakfast, feeling: .bad, isWorthIt: true, notes: "Très salé")))
     }
     
 }
