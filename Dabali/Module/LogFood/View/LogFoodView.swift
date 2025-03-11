@@ -33,7 +33,7 @@ struct LogFoodView: View {
                         if foodLogs.isLoading {
                             ProgressView()
                         } else if foodLogs.foodLogsEntry.isEmpty {
-                            Text("Aucune Entrée")
+                            Text("empty_logs".localized)
                                 .foregroundStyle(.deepGray)
                                 .transition(.opacity)
                         } else {

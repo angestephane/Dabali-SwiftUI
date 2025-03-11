@@ -28,7 +28,7 @@ class FoodLogsViewModel: ObservableObject {
             strongSelf.isLoading = false
         }, failure: { [weak self] error in
             guard let strongSelf = self else { return }
-            strongSelf.errorMessage = "Quelque chose est cassé"
+            strongSelf.errorMessage = "error_message".localized
             strongSelf.isLoading = false
         })
     }

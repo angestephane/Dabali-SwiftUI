@@ -42,16 +42,16 @@ struct LogFoodCardView: View {
             // MARK: - Card Metadata
             
             HStack {
-                Text("émotion \(vm.feeling.feelingIcon)")
+                Text("\("feeling_message".localized) \(vm.feeling.feelingIcon)")
                     .font(.system(.subheadline, weight: .light))
                     .foregroundStyle(.deepGray)
                 Divider()
                     .frame(width: 1, height: 15)
                     .background(.gray)
-                Text("satisfaisant?")
+                Text("\("worth_it_message".localized)")
                     .font(.system(.subheadline, weight: .light))
                     .foregroundStyle(.deepGray)
-                Text("\(vm.isWorthIt ? "Yes" : "Non")")
+                Text("\(vm.isWorthIt ? "yes_message".localized : "no_message".localized)")
                     .font(.system(.caption, weight: .bold))
                     .foregroundStyle(vm.isWorthIt ? .fgGreen : .fgRed)
                     .padding(.vertical, 5)
